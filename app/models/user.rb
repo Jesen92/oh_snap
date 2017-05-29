@@ -5,4 +5,39 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+          #, :confirmable #korisnik ne može koristiti account bez konfirmacije email-a
+
+  validates :web_auth_token, presence: true, uniqueness: true
+  validates :android_auth_token, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, allow_nil: true
+
+  before_validation :generate_web_auth_token, if: 'web_auth_token.blank?'
+  before_validation :generate_android_auth_token, if: 'android_auth_token.blank?'
+
+  def regenerate_web_auth_token!
+    generate_web_auth_token
+    save
+  end
+
+  def regenerate_android_auth_token!
+    generate_android_auth_token
+    save
+  end
+
+  private
+
+  def generate_web_auth_token
+    loop do
+      self.web_auth_token = Devise.friendly_token
+      break unless User.exists?(web_auth_token: web_auth_token)
+    end
+  end
+
+  def generate_android_auth_token
+    loop do
+      self.android_auth_token = Devise.friendly_token
+      break unless User.exists?(android_auth_token: android_auth_token)
+    end
+  end
+
 end
