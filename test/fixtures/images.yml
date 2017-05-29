@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  path_to_image: MyString
+  user_id: 1
+  event_id: 1
+
+two:
+  path_to_image: MyString
+  user_id: 1
+  event_id: 1
