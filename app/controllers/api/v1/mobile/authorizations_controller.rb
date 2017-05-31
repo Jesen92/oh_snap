@@ -12,22 +12,15 @@ module Api
             user if Devise.secure_compare(token, user.android_auth_token) unless user.blank?
           end
 
-          (respond_with_auth_error and return) if user.blank? #Korisnik ne postoji ili se ne poklapa autentifikacijski token
+          (respond_with_error(401, auth_error_message) and return) if user.blank? #Korisnik ne postoji ili se ne poklapa autentifikacijski token
 
           # devise, daje ti current_user metodu
           sign_in(user, store: false)
         end
 
-        ######################## Sign in error
-        def auth_errors
-          @auth_error_message ||= 'Molimo ulogirajte se da bi se zadana naredba izvršila!'
-          [ {detail: @auth_error_message}]
+        def auth_error_message
+          'Molimo ulogirajte se da bi se zadana naredba izvršila'
         end
-
-        def respond_with_auth_error
-          render json: { errors: auth_errors }, status: :unauthorized
-        end
-        ########################
       end
     end
   end

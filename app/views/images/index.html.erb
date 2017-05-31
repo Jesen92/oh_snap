@@ -1,0 +1,5 @@
+<h1>Slike</h1>
+<hr>
+<% @images.each do |image| %>
+    <p><%= imate_tag(image.path_to_image) %></p>
+<% end %>

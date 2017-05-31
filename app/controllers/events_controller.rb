@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @qr = RQRCode::QRCode.new(@event.access_code)
   end
 
   # GET /events/new
@@ -59,6 +60,10 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def download_qr_code
+
   end
 
   private
