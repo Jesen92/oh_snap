@@ -33,7 +33,7 @@ module Api
 
         def create_session_errors
           @auth_error_message ||= 'Ups! Upisali ste krivu lozinku ili email!'
-          { id:[ @auth_error_message] }
+          [ {detail: @auth_error_message}]
         end
 
         def respond_with_create_session_error

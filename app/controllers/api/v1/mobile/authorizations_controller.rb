@@ -21,7 +21,7 @@ module Api
         ######################## Sign in error
         def auth_errors
           @auth_error_message ||= 'Molimo ulogirajte se da bi se zadana naredba izvršila!'
-          { id:[ @auth_error_message], detail: 'not authenticated' }
+          [ {detail: @auth_error_message}]
         end
 
         def respond_with_auth_error
