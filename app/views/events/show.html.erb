@@ -43,5 +43,8 @@
   <%= link_to("Download", qr_codes_path(id: @event.id), :method => :post) %>
 </p>
 
+<%= link_to 'Go to gallery', images_show_path(id: @event.id) %>
+<%= link_to 'Stream', images_index_path(id: @event.id) %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

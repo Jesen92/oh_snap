@@ -1,5 +1,6 @@
-<h1>Slike</h1>
-<hr>
-<% @images.each do |image| %>
-    <p><%= imate_tag(image.path_to_image) %></p>
+<div class="container-fluid">
+<% @images.reverse_each do |image| %>
+    <%= image_tag(image.path_to_image, class: "img-thumbnail", style: "margin-top: 15px; height: 95vh; display: block; margin-left: auto; margin-right: auto;") %>
 <% end %>
+
+</div>

@@ -6,6 +6,14 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @images = @event.images
+    images_array = []
+
+    @images.each do |image|
+      images_array << { :src => image.path_to_image, :w => 1920, :h => 1080}
+    end
+
+    gon.images = images_array
   end
 
   private
@@ -13,4 +21,7 @@ class ImagesController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
+
+
+
 end
