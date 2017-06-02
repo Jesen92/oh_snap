@@ -1,0 +1,21 @@
+
+<div class="login-page">
+  <div class="form">
+    <% if alert %>
+        <p class="alert alert-default"><%= alert %></p>
+    <% end %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "login-form") do |f| %>
+
+
+
+          <%= f.text_field :username, autofocus: true, placeholder: 'Username' %>
+          <%= f.password_field :password, autocomplete: "off", placeholder: 'Lozinka' %>
+
+            <%= f.button "Log in", action_name: :submit %>
+          <p class="message">Nisi registriran? <%= link_to 'Registriraj se', new_user_registration_path %></p>
+          <p class="message">Zaboravio lozinku? <%= link_to 'Resetiraj lozinku', new_user_password_path %></p>
+
+
+<% end %>
+  </div>
+</div>

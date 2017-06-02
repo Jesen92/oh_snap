@@ -6,11 +6,10 @@ module Api
 
         def create
           event = Event.find_by(access_code: create_user_event_params[:access_code])
+          (respond_with_error(400, 'Ups! Event sa upisanim kodom ne postoji! Provjerite da li ste dobro upisali kod i pokušajte ponovo!') and return) if event.blank?
+          UserEvent.create({:event_id => event.id, :user_id => current_user.id}) unless UserEvent.exists?({:event_id => event.id, :user_id => current_user.id})
 
-          respond_with_error(400, 'Ups! Event sa upisanim kodom ne postoji! Provjerite da li ste dobro upisali kod i pokušajte ponovo!') if event.blank?
-          UserEvent.create({:event_id => event.id, :user_id => current_user.id})
-
-          render json: { "detail" => "Uspješno ste se priključili događaju! Sad fotkaj kolko hoćeš! ;)"}.to_json
+          respond_with event
         end
 
         def index

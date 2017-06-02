@@ -4,7 +4,7 @@ module Api
       class ApiController < ApplicationController
         include JsonApiResponders
 
-        skip_before_action  :verify_authenticity_token
+        skip_before_action  :verify_authenticity_token, :authenticate_user!
         before_action :configure_permitted_parameters, if: :devise_controller?
 
         protected

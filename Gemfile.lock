@@ -111,6 +111,7 @@ GEM
       multi_json
       request_store (>= 1.0)
     i18n (0.8.1)
+    ionicons-rails (2.0.0)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
@@ -258,6 +259,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   gon
+  ionicons-rails
   jbuilder (~> 2.5)
   jquery-rails
   json_api_responders

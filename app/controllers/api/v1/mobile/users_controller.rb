@@ -5,7 +5,10 @@ module Api
         skip_before_action :authenticate_user_from_auth_token!, only: :create
 
         def create
-          respond_with User.create(user_params), serializer: UserSerializer
+          user = User.create(user_params)
+          respond_with user, serializer: UserSerializer, on_error: {
+              status: :bad_request, detail: 'Pogreška kod kreiranja korisnika! Username ili email već postoji!'
+          }
         end
 
         def show

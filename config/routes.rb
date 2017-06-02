@@ -68,7 +68,8 @@ Rails.application.routes.draw do
 
   resources :events
   resources :qr_codes
-  devise_for :users
+  resources :images
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', confirmations: 'users/confirmations'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'events#index'
