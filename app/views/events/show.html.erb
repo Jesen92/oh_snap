@@ -18,6 +18,10 @@
   td.white { border-color: #fff; }
 </style>
 
+<%= link_to events_path do %>
+    <i class="ion-arrow-left-b" style="font-size: 24px"> Back</i>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -46,5 +50,8 @@
 <%= link_to 'Go to gallery', images_show_path(id: @event.id) %>
 <%= link_to 'Stream', images_index_path(id: @event.id) %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<br><br>
+<% if @event.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

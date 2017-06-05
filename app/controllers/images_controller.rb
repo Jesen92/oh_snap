@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_event
+  before_action :set_event, only: [:index, :show, :destroy]
 
   def index
     @images = @event.images
@@ -29,6 +29,10 @@ class ImagesController < ApplicationController
     redirect_to images_show_path(id: @event.id)
   end
 
+  def users_images
+    @images = current_user.images
+  end
+
   private
 
   def set_event
@@ -40,4 +44,5 @@ class ImagesController < ApplicationController
 
     user_event.blank? || !user_event.admin? ? false : true
   end
+
 end

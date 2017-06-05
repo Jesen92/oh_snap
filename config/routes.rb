@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      namespace :mobile do
+  get 'users/user_events' => 'users#user_events', :as => 'user_events'
 
-      end
-    end
-  end
+  get 'users/user_images' => 'users#user_images', :as => 'user_images'
 
   namespace :api do
     namespace :v1 do
@@ -37,13 +33,6 @@ Rails.application.routes.draw do
 
   get 'qr_codes/create'
 
-  namespace :api do
-    namespace :v1 do
-      namespace :mobile do
-
-      end
-    end
-  end
 
   namespace :api do
     namespace :v1 do
@@ -69,6 +58,9 @@ Rails.application.routes.draw do
   resources :events
   resources :qr_codes
   resources :images
+
+  get 'images/users_images' => "images#users_images", :as => "users_images"
+
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations', confirmations: 'users/confirmations'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

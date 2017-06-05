@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+
+  <h1>Moji Eventi</h1><small><%= link_to 'Novi Event', new_event_path, class: "btn btn-success" %></small>
+  <hr>
+
+  <br>
+
+
+</div>
+
+<div class="row">
+  <% @events.each do |event| %>
+
+      <div class="col-md-3">
+        <b><%= event.name %></b><small style="color: red"><%= ' - private' if event.private %></small>
+        <%= link_to event do %>
+            <%= image_tag('default_party_compressed.jpg', class: 'img-thumbnail', style: 'margin-bottom: 10px') %>
+        <% end %>
+      </div>
+
+  <% end %>
+</div>
