@@ -24,30 +24,40 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="page-header">
+<h1><%= @event.name %><small> <%= @event.created_at %></small></h1>
+</div>
+
+
+
+<% if @event.private %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="alert alert-danger" role="alert"><%= 'Private event' %></div>
+    </div>
+  </div>
+
+<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="alert alert-info" role="alert"><span style="font-size: 24px"><b>Pristupni kod:</b> <i><%= @event.access_code %></i></span></div>
+  </div>
+</div>
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <strong>QR code:</strong>
+    <%= raw (@qr.as_html) %>
+  </div>
+</div>
 </p>
 
-<p>
-  <strong>Private:</strong>
-  <%= @event.private %>
-</p>
 
 <p>
-  <strong>Access Code:</strong>
-  <%= @event.access_code %>
+  <%= link_to("Download QR", qr_codes_path(id: @event.id), :method => :post) %>
 </p>
 
-<p>
-  <strong>QR code:</strong>
-  <%= raw (@qr.as_html) %>
-</p>
-<p>
-  <%= link_to("Download", qr_codes_path(id: @event.id), :method => :post) %>
-</p>
-
-<%= link_to 'Go to gallery', images_show_path(id: @event.id) %>
+<%= link_to 'Go to gallery', images_show_path(id: @event.id) %> |
 <%= link_to 'Stream', images_index_path(id: @event.id) %>
 
 <br><br>
@@ -55,3 +65,4 @@
   <%= link_to 'Edit', edit_event_path(@event) %> |
   <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+<br><br>

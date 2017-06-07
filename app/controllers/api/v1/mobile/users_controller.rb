@@ -6,6 +6,7 @@ module Api
 
         def create
           user = User.create(user_params)
+
           respond_with user, serializer: UserSerializer, on_error: {
               status: :bad_request, detail: 'Pogreška kod kreiranja korisnika! Username ili email već postoji!'
           }
@@ -29,7 +30,7 @@ module Api
 
         def user_params
           params.require(:user).permit(
-              :username, :email, :password, :password_confirmation
+              :username, :email, :password
           )
         end
 

@@ -5,10 +5,10 @@ module Api
         before_action :authenticate_user_from_auth_token!, :set_user_event!
 
         def create
-          @event.images.create(image_hash)
+          image = @event.images.create(image_hash)
 
           #respond_with @event, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod spremanja slike!' }
-          render json: { detail: 'Slika je uspješno dodana na događaj!'}
+          respond_with image, serializer: ImageSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod spremanja slike!' }
         end
 
         private

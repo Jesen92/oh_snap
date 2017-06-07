@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <b style="font-size: 90px;"><%= 'nema još slika...budi prvi ;)' if @images.blank? %></b>
+  <br><br>
+  <b style="font-size: 35px; padding-top: 45px;"><%= 'nema još slika...budi prvi ;)' if @images.blank? %></b>
   <% @images.reverse_each do |image| %>
       <%= image_tag(image.path_to_image, class: "img-rounded", style: "margin-top: 15px; height: 95vh; display: block; margin-left: auto; margin-right: auto;") %>
   <% end %>

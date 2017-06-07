@@ -13,14 +13,14 @@ module Api
 
             respond_with user, serializer: UserSerializer
           else
-            respond_with_create_session_error
+            respond_with_error(401, 'Ups! Upisali ste krivu lozinku ili email!')
           end
         end
 
         def destroy
           current_user.regenerate_android_auth_token!
 
-          render json: {:user => "Korisnik se uspješno odjavio"}.to_json
+          render json: {detail: "Korisnik se uspješno odjavio"}.to_json
         end
 
         private

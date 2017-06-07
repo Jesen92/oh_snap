@@ -24,7 +24,7 @@ module Api
 
           if !user.reset_password_sent_at || user.reset_password_sent_at < 1.day.ago
             user.send_reset_password_instructions
-            render json: { "user" => "Poslan je email sa instrukcijama za resetiranje lozinke"}.to_json
+            render json: { "user" => {detail:"Poslan je email sa instrukcijama za resetiranje lozinke"}}.to_json
           else
             #render json: { "errors" => { "id" => ["Lozinka se može resetirati samo 1 dnevno!"]}}.to_json, status: :bad_request
             respond_with_error(400, 'Lozinka se može resetirati samo 1 dnevno!')
