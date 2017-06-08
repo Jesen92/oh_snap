@@ -22,13 +22,10 @@
     <i class="ion-arrow-left-b" style="font-size: 24px"> Back</i>
 <% end %>
 
-<p id="notice"><%= notice %></p>
 
 <div class="page-header">
 <h1><%= @event.name %><small> <%= @event.created_at %></small></h1>
 </div>
-
-
 
 <% if @event.private %>
   <div class="row">

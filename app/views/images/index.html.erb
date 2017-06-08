@@ -1,7 +1,44 @@
-<div class="container-fluid">
-  <br><br>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .fit { /* set relative picture size */
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .center {
+    display: block;
+    margin: auto;
+  }
+</style>
+
+<div id="image_request">
+
+
+<div class="container-fluid" style="margin-bottom: 25px">
   <b style="font-size: 35px; padding-top: 45px;"><%= 'nema još slika...budi prvi ;)' if @images.blank? %></b>
-  <% @images.reverse_each do |image| %>
-      <%= image_tag(image.path_to_image, class: "img-rounded", style: "margin-top: 15px; height: 95vh; display: block; margin-left: auto; margin-right: auto;") %>
+    <div id="image_id"><%= @image.id %></div>
+      <%= image_tag(@image.path_to_image, class: "img-rounded center fit", style: "margin-top: 15px;") %>
+</div>
+
+  <%= link_to @event do %>
+      <i class="ion-arrow-left-b" style="font-size: 24px"> Back</i>
   <% end %>
+<script>
+    $(document).ready(
+        function() {
+            setInterval(function() {
+                window.location.href = '/images/index?id='+gon.event+'&current_image='+gon.current_image+'&last_image='+gon.last_image;
+            }, 10000);
+        });
+
+    function set_body_height() { // set body height = window height
+        $('body').height($(window).height());
+    }
+    $(document).ready(function() {
+        $(window).bind('resize', set_body_height);
+        set_body_height();
+    });
+</script>
 </div>

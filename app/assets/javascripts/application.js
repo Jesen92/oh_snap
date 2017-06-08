@@ -11,10 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require photoswipe
 //= require_tree .
 
 
+var gonfix;
+gonfix = function(){
+    eval($("#gonvariables > script").html());
+};
+$(document).on('page:restore', gonfix);
