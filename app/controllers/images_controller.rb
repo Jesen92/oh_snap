@@ -3,16 +3,9 @@ class ImagesController < ApplicationController
   layout 'blank', only: :index
 
   def index
+    @image = IterateImagesInEvent.new( iterate_image_hash, @event ).next_image_in_event
 
-    @images ||= @event.images
-    current_image_id ||= params[:current_image] || @images.last.id
-    current_image = Image.find(current_image_id)
-    get_next_image = IterateImagesInEvent.new( current_image, @event )
-    @image = get_next_image.next_image_in_event
-
-    gon.event ||= @event.id
-    gon.last_image ||= @images.last.id
-    gon.current_image = @image.id
+    gon.image_hash = images_hash_for_js
   end
 
   def show
@@ -55,12 +48,12 @@ class ImagesController < ApplicationController
     user_event.blank? || !user_event.admin? ? false : true
   end
 
-  def next_image_in_event
-    Item.where("id > ?", id).order("id ASC").first || Item.first
+  def images_hash_for_js
+    {:event => @event.id, :last_image => @event.images.last.id, :previous_image => params[:current_image], :current_image => @image.id}
   end
 
-  def previous_image_in_event
-    Item.where("id < ?", id).order("id DESC").first || Item.last
+  def iterate_image_hash
+    {:current_image_id => params[:current_image], :last_image_id => params[:last_image]}
   end
 
 end

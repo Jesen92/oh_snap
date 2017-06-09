@@ -26,8 +26,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="<%= params[:controller] == 'users' && params[:action] == 'user_events' ? 'active' : '' %>"><%= link_to 'Moj Eventi', user_events_path %></li>
           <li class="<%= params[:controller] == 'events' ? 'active' : '' %>"><%= link_to 'Eventi', events_path%></li>
+          <li class="<%= params[:controller] == 'users' && params[:action] == 'user_events' ? 'active' : '' %>"><%= link_to 'Moj Eventi', user_events_path %></li>
           <li class="<%= params[:controller] == 'users' && params[:action] == 'user_images' ? 'active' : '' %>"><%= link_to 'Moje Slike', user_images_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

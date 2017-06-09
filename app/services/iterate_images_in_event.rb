@@ -1,7 +1,7 @@
 class IterateImagesInEvent
-  def initialize(current_image, event) #, last_image
-    @current_image = current_image
-    #@last_image = last_image
+  def initialize(params, event) #, last_image
+    @current_image_id = params[:current_image_id]
+    @last_image_id = params[:last_image_id]
     @event = event
   end
 
@@ -15,15 +15,19 @@ class IterateImagesInEvent
 
   private
 
-  attr_reader :current_image, :event#, :last_image
+  attr_reader :current_image_id, :event, :last_image_id
 
   def find_next_image_in_event
     #(event.images.where("id > ?", last_image.id).first and return) if event.images.last.id > last_image.id
-    event.images.where("id > ?", current_image.id).order('id ASC').first || event.images.first
+    event.images.where("id > ?", current_image_id).order('id ASC').first || event.images.first
   end
 
   def find_previous_image_in_event
-    event.images.where("id > ?", current_image.id).order('id ASC').first || event.images.last
+    event.images.where("id > ?", current_image_id).order('id ASC').first || event.images.last
+  end
+
+  def check_if_new_image_exists
+     event.images.last.id > last_image_id
   end
 
 end
