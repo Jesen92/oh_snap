@@ -3,6 +3,8 @@ class ImagesController < ApplicationController
   layout 'blank', only: :index
 
   def index
+    (return @image) if @event.images.empty?
+
     @image = IterateImagesInEvent.new( iterate_image_hash, @event ).next_image_in_event
 
     gon.image_hash = images_hash_for_js
