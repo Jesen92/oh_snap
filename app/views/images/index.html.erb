@@ -16,10 +16,10 @@
 <div id="image_request">
 
 
-<div class="container-fluid" style="margin-bottom: 25px">
+<div class="container-fluid" style="margin-bottom: 25px;">
   <b style="font-size: 35px; padding-top: 45px;"><%= 'nema još slika...budi prvi ;)' if @image.blank? %></b>
     <div id="image_id"><%= @image.id %></div>
-      <%= image_tag(@image.path_to_image, class: "img-rounded center fit", style: "margin-top: 15px; min-height: 1080px; min-width: 1920px; margin-bottom: 10px;") %>
+      <%= image_tag(@image.path_to_image, class: "img-rounded center fit") %>
 </div>
 
   <%= link_to @event do %>
@@ -30,7 +30,7 @@
         function() {
             setInterval(function() {
                 window.location.href = '/images/index?id='+gon.image_hash['event']+'&current_image='+gon.image_hash['current_image']+'&last_image='+gon.image_hash['last_image'];
-            }, 10000);
+            }, 5000);
         });
 
     function set_body_height() { // set body height = window height
