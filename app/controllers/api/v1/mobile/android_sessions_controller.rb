@@ -3,7 +3,8 @@ module Api
     module Mobile
       class AndroidSessionsController < AuthorizationsController
         include Devise::Controllers::Helpers
-        respond_to :html, :xml, :json
+        include JsonApiResponders
+        respond_to :json
         skip_before_action :authenticate_user_from_auth_token!, only: :create
 
         def create
