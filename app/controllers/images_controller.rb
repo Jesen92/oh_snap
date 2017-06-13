@@ -51,7 +51,8 @@ class ImagesController < ApplicationController
   end
 
   def images_hash_for_js
-    {:event => @event.id, :last_image => @event.images.last.id, :previous_image => params[:current_image], :current_image => @image.id}
+    {:event => @event.id, :last_image => @event.images.last.id,
+     :previous_image => params[:current_image], :current_image => @image.id}
   end
 
   def iterate_image_hash
