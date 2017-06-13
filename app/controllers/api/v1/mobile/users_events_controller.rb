@@ -2,6 +2,7 @@ module Api
   module V1
     module Mobile
       class UsersEventsController < AuthorizationsController
+        include JsonApiResponders
         before_action :authenticate_user_from_auth_token!
 
         def create

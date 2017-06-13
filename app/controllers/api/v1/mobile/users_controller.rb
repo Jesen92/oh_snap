@@ -2,6 +2,7 @@ module Api
   module V1
     module Mobile
       class UsersController < AuthorizationsController
+        include JsonApiResponders
         skip_before_action :authenticate_user_from_auth_token!, only: :create
 
         def create

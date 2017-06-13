@@ -2,6 +2,7 @@ module Api
   module V1
     module Mobile
       class ImagesController < AuthorizationsController
+        include JsonApiResponders
         respond_to :json
         before_action :authenticate_user_from_auth_token!, :set_user_event!
 
