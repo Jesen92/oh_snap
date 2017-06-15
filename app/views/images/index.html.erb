@@ -20,7 +20,7 @@
   <b style="font-size: 35px; padding-top: 45px;"><%= 'nema još slika...budi prvi ;)' if @image.blank? %></b>
   <% unless @image.blank? %>
     <div id="image_id"><%= @image.id %></div>
-      <%= image_tag(@image.path_to_image, class: "img-rounded center fit") %>
+      <%= image_tag(@image.path_to_image, class: "img-rounded center fit" ,style: "height: 1080px; width: 1920px;") %>
   <% end %>
 </div>
 
