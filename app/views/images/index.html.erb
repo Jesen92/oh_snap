@@ -11,30 +11,35 @@
     display: block;
     margin: auto;
   }
+
+  div {
+    width:90vw;
+    height:90vh;
+  }
+  img {
+    max-width:100%;
+    height:auto;
+    max-height:100%;
+
+  }
 </style>
 
 <div id="image_request">
 
 
-<div class="container-fluid" style="margin-bottom: 25px;">
+<div class="container-fluid" style="margin-top: 10px">
   <b style="font-size: 35px; padding-top: 45px;"><%= 'nema još slika...budi prvi ;)' if @image.blank? %></b>
   <% unless @image.blank? %>
-    <div id="image_id"><%= @image.id %></div>
-      <%= image_tag(@image.path_to_image, class: "img-rounded center fit" ,style: "height: 1080px; width: 1920px;") %>
+    <%= @image.id %> <%= @image.user.username %>
+      <%= image_tag(@image.path_to_image, class: "img-rounded img center fit", style: "margin-top: 15px;") %>
   <% end %>
-</div>
-
   <%= link_to @event do %>
       <i class="ion-arrow-left-b" style="font-size: 24px"> Back</i>
   <% end %>
-<script>
-    $(document).ready(
-        function() {
-            setInterval(function() {
-                window.location.href = '/images/index?id='+gon.image_hash['event']+'&current_image='+gon.image_hash['current_image']+'&last_image='+gon.image_hash['last_image'];
-            }, 5000);
-        });
+</div>
 
+
+<script>
     function set_body_height() { // set body height = window height
         $('body').height($(window).height());
     }
@@ -42,5 +47,14 @@
         $(window).bind('resize', set_body_height);
         set_body_height();
     });
+
+    $(document).ready(
+        function() {
+            setInterval(function() {
+                window.location.href = '/images/index?id='+gon.image_hash['event']+'&current_image='+gon.image_hash['current_image']+'&last_image='+gon.image_hash['last_image'];
+            }, 5000);
+        });
+
+
 </script>
 </div>

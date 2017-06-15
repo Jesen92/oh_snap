@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise'
 gem 'pry-rails'
+gem 'fastimage'
+gem "bugsnag"
 
 gem 'rqrcode'
 

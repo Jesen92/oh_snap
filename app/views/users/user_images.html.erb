@@ -25,16 +25,11 @@
   </div>
   <div class="row">
     <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-      <% @images.each do |image| %>
+      <% @images_array.each do |image| %>
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href="<%= image.path_to_image %>" itemprop="contentUrl" data-size="1920x1080">
-              <img src="<%= image.path_to_image %>" itemprop="thumbnail"  alt="Image description" />
+            <a href="<%= image[:src] %>" itemprop="contentUrl" data-size="<%= image[:width]%>x<%= image[:height] %>">
+              <img src="<%= image[:src] %>" itemprop="thumbnail"  alt="Image description" />
             </a>
-            <% if current_user.id == image.event.user_id %>
-                <%= link_to image_path(id: image.event.id, image_id: image.id), :method => :delete,  data: { confirm: 'Da li ste sigurni da želite obrisati sliku?' } do %>
-                    <i class="ion-close-circled"></i>
-                <% end %>
-            <% end %>
           </figure>
       <% end %>
     </div>

@@ -30,7 +30,7 @@
             <a href="<%= image.path_to_image %>" itemprop="contentUrl" data-size="1920x1080">
               <img src="<%= image.path_to_image %>" itemprop="thumbnail"  alt="Image description" />
             </a>
-            <% if current_user.id == @event.user_id %>
+            <% if UserEvent.exists?(event_id: @event.id, user_id: current_user.id, admin: true) %>
                 <%= link_to image_path(id: image.event.id, image_id: image.id), :method => :delete,  data: { confirm: 'Da li ste sigurni da želite obrisati sliku?' } do %>
                 <i class="ion-close-circled"></i>
             <% end %>

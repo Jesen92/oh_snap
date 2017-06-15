@@ -58,7 +58,7 @@
 <%= link_to 'Stream', images_index_path(id: @event.id) %>
 
 <br><br>
-<% if @event.user_id == current_user.id %>
+<% if UserEvent.exists?(event_id: @event.id, user_id: current_user.id, admin: true) %>
   <%= link_to 'Edit', edit_event_path(@event) %> |
   <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

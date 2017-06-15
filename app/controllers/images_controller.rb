@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  require 'fastimage'
+
   before_action :set_event, only: [:index, :show, :destroy]
   layout 'blank', only: :index
 
@@ -12,13 +14,17 @@ class ImagesController < ApplicationController
 
   def show
     @images = @event.images
-    images_array = []
+    @images_array = []
+
+    is_user_admin = UserEvent.exists?(event_id: @event.id, user_id: current_user.id, admin: true)
 
     @images.each do |image|
-      images_array << { :src => image.path_to_image, :w => 1920, :h => 1080}
+      image_size = FastImage.size(image.path_to_image)
+      @images_array << { :id => image.id,:src => image.path_to_image,
+                         :width => image_size[0], :height => image_size[1], :is_user_admin => is_user_admin}
     end
 
-    gon.images = images_array
+    gon.images = @images_array
   end
 
   def destroy
