@@ -32,7 +32,7 @@
   <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
   <% @images.each do |image| %>
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href="<%= image.path_to_image %>" itemprop="contentUrl" data-size="3120x4160">
+            <a href="<%= image.path_to_image %>" itemprop="contentUrl" data-size="1080x1920">
               <img src="<%= image.path_to_image %>" itemprop="thumbnail"  alt="Image description" />
             </a>
             <% if current_user.id == @event.user_id %>

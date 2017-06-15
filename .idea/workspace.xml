@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c3475a-496a-4ca8-957f-d14ddbdaf31d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/images/show.html.erb" afterPath="$PROJECT_DIR$/app/views/images/show.html.erb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,8 +68,8 @@
       <file leaf-file-name="show.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/images/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            <state relative-caret-position="247">
+              <caret line="34" column="91" lean-forward="false" selection-start-line="34" selection-start-column="91" selection-end-line="34" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -899,7 +898,7 @@
       <workItem from="1497027410819" duration="654000" />
       <workItem from="1497268362335" duration="1534000" />
       <workItem from="1497385403328" duration="5324000" />
-      <workItem from="1497459065334" duration="5200000" />
+      <workItem from="1497459065334" duration="5364000" />
     </task>
     <task id="LOCAL-00001" summary="sessions for android">
       <created>1496073089685</created>
@@ -926,7 +925,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114504000" />
+    <option name="totallyTimeSpent" value="114668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-117" width="1920" height="1080" extended-state="0" />
@@ -1375,8 +1374,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/images/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        <state relative-caret-position="247">
+          <caret line="34" column="91" lean-forward="false" selection-start-line="34" selection-start-column="91" selection-end-line="34" selection-end-column="91" />
           <folding />
         </state>
       </provider>
