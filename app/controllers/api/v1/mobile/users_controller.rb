@@ -34,7 +34,6 @@ module Api
               :username, :email, :password
           )
         end
-
       end
     end
   end

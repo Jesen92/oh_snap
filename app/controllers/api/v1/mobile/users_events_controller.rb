@@ -31,7 +31,6 @@ module Api
         def user_event_error
           'Ups! Event sa upisanim kodom ne postoji! Provjerite da li ste dobro upisali kod i pokušajte ponovo!'
         end
-
       end
     end
   end
