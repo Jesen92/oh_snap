@@ -1,5 +1,7 @@
 class ImageSerializer < ActiveModel::Serializer
-  attributes :id, :detail, :user, :event
+  attributes :id, :detail
+  #attribute :user, serializer: UserSerializer
+  #attribute :event, serializer: EventSerializer
 
   def detail
     'Slika je uspješno prenesena'

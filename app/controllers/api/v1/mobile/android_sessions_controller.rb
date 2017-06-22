@@ -3,7 +3,7 @@ module Api
     module Mobile
       class AndroidSessionsController < AuthorizationsController
         include Devise::Controllers::Helpers
-        include JsonApiResponders
+        include ErrorsHelper
         respond_to :json
         skip_before_action :authenticate_user_from_auth_token!, only: :create
 
@@ -13,7 +13,7 @@ module Api
           if user && user.valid_password?(session_params[:password])
             user.regenerate_android_auth_token!
 
-            respond_with user, serializer: UserSerializer
+            respond_with user, serializer: Mobile::UserAndroidSessionSerializer
           else
             respond_with_error(401, 'Ups! Upisali ste krivu lozinku ili email!')
           end
@@ -22,7 +22,7 @@ module Api
         def destroy
           current_user.regenerate_android_auth_token!
 
-          render json: {detail: "Korisnik se uspješno odjavio"}.to_json
+          render json: { user => {detail: "Korisnik se uspješno odjavio"}}.to_json
         end
 
         private

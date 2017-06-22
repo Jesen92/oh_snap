@@ -52,7 +52,7 @@ gem 'aws-sdk', '~> 2'
 
 #JSON API
 gem 'responders'
-gem 'json_api_responders'
+#gem 'json_api_responders'
 
 group :development, :test do
   gem 'dotenv-rails'

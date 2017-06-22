@@ -2,7 +2,7 @@ module Api
   module V1
     class SessionsController < AuthorizationsController
       include Devise::Controllers::Helpers
-      include JsonApiResponders
+      include ErrorsHelper
       respond_to :json
       skip_before_action :authenticate_user_from_auth_token!, only: :create
 

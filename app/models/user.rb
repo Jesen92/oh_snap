@@ -19,13 +19,17 @@ class User < ApplicationRecord
   before_validation :generate_android_auth_token, if: 'android_auth_token.blank?'
 
   def regenerate_web_auth_token!
+    binding.pry
     generate_web_auth_token
     save
+    binding.pry
   end
 
   def regenerate_android_auth_token!
+    binding.pry
     generate_android_auth_token
     save
+    binding.pry
   end
 
   def email_required?

@@ -1,7 +1,7 @@
 module Api
   module V1
     class EventsController < AuthorizationsController
-      include JsonApiResponders
+      include ErrorsHelper
       before_action :set_event, only: [:show, :edit, :update, :destroy]
 
       # GET /events
@@ -76,6 +76,5 @@ module Api
         params.require(:event).permit(:id, :name, :private)
       end
     end
-
   end
 end

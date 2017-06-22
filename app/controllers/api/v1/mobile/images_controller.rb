@@ -2,7 +2,7 @@ module Api
   module V1
     module Mobile
       class ImagesController < AuthorizationsController
-        include JsonApiResponders
+        include ErrorsHelper
         respond_to :json
         before_action :authenticate_user_from_auth_token!, :set_user_event!
 
@@ -22,12 +22,15 @@ module Api
 
         def image_params
           params.require(:image).permit(
-            :event_id, :path_to_image
+            :event_id, :path_to_image,
+            :width, :height
           )
         end
 
         def image_hash
-          {:event_id => @event.id, :user_id => current_user.id, :path_to_image => image_params[:path_to_image]}
+          {:event_id => @event.id, :user_id => current_user.id,
+           :path_to_image => image_params[:path_to_image],
+           :width => image_params[:width], :height => image_params[:height]}
         end
 
       end

@@ -1,7 +1,7 @@
 module Api
   module V1
     class ResetPasswordsController < AuthorizationsController
-      include JsonApiResponders
+      include ErrorsHelper
       skip_before_action :authenticate_user_from_auth_token!, only: :create
 
       def create

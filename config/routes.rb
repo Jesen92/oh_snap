@@ -1,6 +1,78 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      namespace :mobile do
+        get 'users_images/index'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'users_images/show'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/index'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/show'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/new'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/create'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/edit'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/update'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :mobile do
+        get 'events/destroy'
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
       get 'users_images/index'
     end
   end
@@ -145,20 +217,24 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :mobile do
-        get 'users/create'
-        get 'users/show'
-        get 'users/edit'
+        post 'users/create'
+        post 'users/show'
+        post 'users/edit'
         post 'users/update'
         get 'android_sessions/create'
         post 'android_sessions/destroy'
         post 'reset_passwords/create'
         post 'images/create'
+        post 'users_events/index'
+        post 'events/show'
 
         resources :users
         resources :android_sessions
         resources :reset_passwords
         resources :users_events
         resources :images
+        resources :events
+        resources :users_images
       end
     end
   end

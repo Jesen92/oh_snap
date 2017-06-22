@@ -16,14 +16,8 @@ module OhSnap
       Devise::RegistrationsController.layout "sign_in"
     end
 
-    ActiveModelSerializers.config.adapter = :json_api
+    ActiveModelSerializers.config.adapter = :json
 
-    JsonApiResponders.configure do |config|
-      config.required_options = {
-          index: [:each_serializer],
-          create: [:serializer]
-      }
-    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

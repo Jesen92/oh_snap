@@ -1,15 +1,13 @@
 module Api
   module V1
     class UsersController < AuthorizationsController
-      include JsonApiResponders
+      include ErrorsHelper
       skip_before_action :authenticate_user_from_auth_token!, only: :create
 
       def create
         user = User.create(user_params)
 
-        respond_with user, serializer: UserSerializer, on_error: {
-            status: :bad_request, detail: 'Pogreška kod kreiranja korisnika! Username ili email već postoji!'
-        }
+        respond_with user, serializer: UserSerializer
       end
 
       def show

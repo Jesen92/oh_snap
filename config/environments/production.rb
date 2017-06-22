@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  Bugsnag.configure do |config|
+    config.api_key = "fdd35e45edbf33f6f9b04131e12a6b60"
+  end
   # Code is not reloaded between requests.
   config.cache_classes = true
 
