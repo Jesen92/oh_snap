@@ -13,7 +13,7 @@ module Api
           if user && user.valid_password?(session_params[:password])
             user.regenerate_android_auth_token!
 
-            respond_with user, serializer: Mobile::UserAndroidSessionSerializer
+            respond_with :api, :v1, :mobile, user, serializer: ::Mobile::UserAndroidSessionSerializer
           else
             respond_with_error(401, 'Ups! Upisali ste krivu lozinku ili email!')
           end

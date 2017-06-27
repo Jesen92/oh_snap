@@ -8,7 +8,7 @@ module Api
       def authenticate_user_from_auth_token!
         user = authenticate_with_http_token do |token, options|
           user = User.find_by(username: options['identifier']) #|| User.find_by(phone_number: options['identifier'])
-          user if Devise.secure_compare(token, user.android_auth_token) unless user.blank?
+          user if Devise.secure_compare(token, user.web_auth_token) unless user.blank?
         end
 
         (respond_with_error(401, auth_error_message) and return) if user.blank? #Korisnik ne postoji ili se ne poklapa autentifikacijski token

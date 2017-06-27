@@ -12,7 +12,7 @@ module Api
         if user && user.valid_password?(session_params[:password])
           user.regenerate_web_auth_token!
 
-          respond_with user, serializer: UserSerializer
+          respond_with :api, :v1, user, serializer: UserSessionsSerializer
         else
           respond_with_error(401, 'Ups! Upisali ste krivu lozinku ili email!')
         end

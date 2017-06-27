@@ -10,7 +10,7 @@ module Api
           image = @event.images.create(image_hash)
 
           #respond_with @event, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod spremanja slike!' }
-          respond_with image, serializer: ImageSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod spremanja slike!' }
+          respond_with :api, :v1, :mobile, image, serializer: ImageSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod spremanja slike!' }
         end
 
         private

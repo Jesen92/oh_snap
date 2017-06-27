@@ -236,6 +236,13 @@ Rails.application.routes.draw do
         resources :events
         resources :users_images
       end
+
+      resources :events
+      resources :reset_passwords
+      resources :sessions
+      resources :users
+      resources :users_events
+      resources :users_images
     end
   end
 

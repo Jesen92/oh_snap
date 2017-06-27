@@ -8,13 +8,13 @@ module Api
       # GET /events.json
       def index
         events = Event.where(private: false)
-        respond_with events, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod dohvaćanja svih event-a!' }
+        respond_with :api, :v1, events, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod dohvaćanja svih event-a!' }
       end
 
       # GET /events/1
       # GET /events/1.json
       def show
-        respond_with @event, serializer: EventSerializer
+        respond_with :api, :v1, @event, serializer: EventSerializer
       end
 
       # GET /events/new
@@ -25,7 +25,7 @@ module Api
       def edit
         #TODO provjera da li je user admin event-a
         if UserEvent.exists?(event_id: @event.id, user_id: current_user.id, admin: true)
-          respond_with @event, serializer: EventSerializer
+          respond_with :api, :v1, @event, serializer: EventSerializer
         else
           respond_with_error(status: 401, detail: 'Nemate autorizaciju za izmjenu event-a')
         end
@@ -36,7 +36,7 @@ module Api
       def create
         event = current_user.events.create(new_event_params)
 
-        respond_with event, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod kreiranja event-a!' }
+        respond_with :api, :v1, event, serializer: EventSerializer, :on_error => { status: :bad_request, detail: 'Pogreška kod kreiranja event-a!' }
       end
 
       # PATCH/PUT /events/1
@@ -44,7 +44,7 @@ module Api
       def update
         @event.update(event_params)
 
-        respond_with @event, serializer: EventSerializer, :on_error => {status: :bad_request, detail: 'Pogreška kod izmjene event-a!'}
+        respond_with :api, :v1, @event, serializer: EventSerializer, :on_error => {status: :bad_request, detail: 'Pogreška kod izmjene event-a!'}
       end
 
       # DELETE /events/1

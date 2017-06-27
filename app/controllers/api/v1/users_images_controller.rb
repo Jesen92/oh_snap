@@ -5,7 +5,7 @@ module Api
       before_action :authenticate_user_from_auth_token!
 
       def index
-        respond_with current_user.images
+        respond_with :api, :v1, current_user.images
       end
     end
   end

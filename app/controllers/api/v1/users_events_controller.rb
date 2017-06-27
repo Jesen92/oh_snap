@@ -13,7 +13,7 @@ module Api
       end
 
       def index
-        respond_with current_user.events
+        respond_with :api, :v1, current_user.events
       end
 
       def show
