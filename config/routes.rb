@@ -227,13 +227,16 @@ Rails.application.routes.draw do
         post 'images/create'
         post 'users_events/index'
         post 'events/show'
+        get 'events/:id/event_images' => 'events#event_images'
 
         resources :users
         resources :android_sessions
         resources :reset_passwords
         resources :users_events
         resources :images
-        resources :events
+        resources :events do
+          post :event_images, on: :collection
+        end
         resources :users_images
       end
 

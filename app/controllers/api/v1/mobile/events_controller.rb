@@ -4,7 +4,7 @@ module Api
       class EventsController < AuthorizationsController
         include ErrorsHelper
         respond_to :json
-        before_action :set_event, only: [:show, :edit, :update, :destroy]
+        before_action :set_event, only: [:show, :edit, :update, :destroy, :event_images]
 
         # GET /events
         # GET /events.json
@@ -61,15 +61,21 @@ module Api
           end
         end
 
+        def event_images
+          #event = Event.find(params[:id])
+          (respond_with_error(400, 'Korisnik nema pristup događaju') and return) unless @event.users.exists?(id: current_user.id)
+
+          respond_with @event.images
+        end
+
         private
-        # Use callbacks to share common setup or constraints between actions.
+
         def set_event
-          @event = Event.find_by(id: event_params[:id])
+          @event = Event.find_by(id: params[:id] || event_params[:id] )
 
           (return respond_with_error(:bad_request, 'Nije pronađen event!')) if @event.blank?
         end
 
-        # Never trust parameters from the scary internet, only allow the white list through.
         def new_event_params
           params.require(:event).permit(:id, :name, :private, :user_id => current_user.id)
         end
